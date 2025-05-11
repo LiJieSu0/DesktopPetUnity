@@ -18,6 +18,8 @@ public class StatusUI : MonoBehaviour
     }
     private void GenerateStatusText()
     {
+        if(this.transform.childCount==Pet.instance.statusList.Count)
+            return; // Already generated
         foreach (IStatus status in Pet.instance.statusList)
         {
             TextMeshProUGUI newText = Instantiate(statusText, this.transform);
@@ -25,9 +27,13 @@ public class StatusUI : MonoBehaviour
         }
     }
     public void UpdateStatusText(){
+        Debug.Log("Count "+Pet.instance.statusList.Count);
+        if(this.transform.childCount!=Pet.instance.statusList.Count){
+            GenerateStatusText();
+        }
         for(int i=0;i<Pet.instance.statusList.Count;i++){
             TextMeshProUGUI text = this.transform.GetChild(i).GetComponent<TextMeshProUGUI>();
             text.text = Pet.instance.statusList[i].GetStatusName() + ": " + Pet.instance.statusList[i].GetValue() + "/" + Pet.instance.statusList[i].GetMaxValue() + "\n";
-        }
+        }   
     }
 }

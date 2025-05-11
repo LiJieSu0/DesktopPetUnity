@@ -27,9 +27,11 @@ public class UISpawner : MonoBehaviour
             // Instantiate UI prefab
             // GameObject uiInstance = Instantiate(uiPrefab, canvas.transform);
             // Set UI position
+            uiPrefab.gameObject.SetActive(true);
             RectTransform rectTransform = uiPrefab.GetComponent<RectTransform>();
             localPoint= new Vector2(localPoint.x+100, localPoint.y-120);
             rectTransform.anchoredPosition = localPoint;
+            //TODO detect click space and disable the menu
         }
     }
 }

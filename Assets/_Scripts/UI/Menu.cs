@@ -12,6 +12,7 @@ public class Menu : MonoBehaviour
         img=GetComponent<Image>();
         btn1.onClick.AddListener(() => { Pet.instance.statusList[1].ChangeValue(50); });
         btn2.onClick.AddListener(() => { img.color = Color.blue; });
+        this.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
